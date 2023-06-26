@@ -21,9 +21,11 @@ public class UserService {
   public User getUsers(int id) {
     for (User user : this.users) {
       if (user.getId() == id) {
+        System.out.println("user from S: " + user);
         return user;
       }
     }
+    System.out.println("nothing");
     return null;
   }
 
@@ -34,7 +36,7 @@ public class UserService {
   return user ; 
   }
   
-  public static User updateUser(int id, String name,int age){
+  public  User updateUser(int id, String name,int age){
     for(User user : this.users){
       if (user.getId() == id){
         user.setName(name);
@@ -44,5 +46,13 @@ public class UserService {
     }
     return null ; 
   }
+  
 
+  public User deleteUser(int id){
+   for (User user : this.users){
+      if(user.getId() == id){
+       int index =  this.users.indexOf(user);
+      }
+     }
+  }
 }

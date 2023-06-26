@@ -1,5 +1,6 @@
 package fr.diallo.myApi.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,8 +22,10 @@ public class UserController {
     @GetMapping("/user")
     public User getUser(@RequestParam int id) {
         User user = userService.getUsers(id);
+        System.out.println("user from C: " + user);
         return user;
     }
+    
     /*À l'intérieur de cette méthode, appelez la méthode « createUser » du « userService », avec les
     paramètres de « body » que vous récupérez avec les « getters ». Les paramètres devront être
     les variables « name » et « age ». Vous récupérerez un objet de type « User » que vous retournerez */
@@ -33,16 +36,20 @@ public class UserController {
         User user = userService.createUser(name,age);
         return user;
     }
+
     @PutMapping("/user")
     public User updateUser(@RequestParam Integer id , @Requestbody UserRequest body ){
-        User user = UserService.updateUser(id,body.getName(),body.getAge());
+        User user = userService.updateUser(id,body.getName(),body.getAge());
             return user ; 
+    }
 
+    @DeleteMapping("/user")
+    public User deletUser(@RequestParam Int id){
+    User user = userService.deleteUser(0);
+    return user ;
     }
 
 
-
-    
 }
 
 
