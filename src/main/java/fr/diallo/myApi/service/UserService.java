@@ -24,7 +24,25 @@ public class UserService {
         return user;
       }
     }
-    
     return null;
   }
+
+  public User createUser(String name, int age){
+  User user = new User(this.users.size(),name,age);
+  this.users.add(user);
+
+  return user ; 
+  }
+  
+  public static User updateUser(int id, String name,int age){
+    for(User user : this.users){
+      if (user.getId() == id){
+        user.setName(name);
+        user.setAge(age);
+        return user;
+      }
+    }
+    return null ; 
+  }
+
 }
